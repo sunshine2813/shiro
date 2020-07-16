@@ -1,4 +1,4 @@
-package com.sdhh.shiro;
+package com.sdhh;
 
 /*
 * Created by 
