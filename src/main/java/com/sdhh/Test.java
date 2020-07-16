@@ -1,4 +1,4 @@
-package com.sdhh.shiro;
+package com.sdhh;
 
 /**
  * Created by Administrator on 2020/7/15.
