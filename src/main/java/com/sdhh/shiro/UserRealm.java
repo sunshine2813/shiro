@@ -27,7 +27,7 @@ public class UserRealm extends AuthorizingRealm {
         simpleAuthorizationInfo.addRoles(roleNameSet);
 
         simpleAuthorizationInfo.addStringPermissions(permissionNameSet);
-        System.out.println("完成授权返回"); 
+        System.out.println("完成授权返回");
         return simpleAuthorizationInfo;
 
     }
