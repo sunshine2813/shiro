@@ -11,21 +11,19 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd http://www.alibaba.com/schema/stat http://www.alibaba.com/schema/stat.xsd"
        default-lazy-init="true">
 
-    <!-- 自动扫描根路径下的所有注解 -->
-    <context:component-scan base-package="com.sdhh.*" />
-
-    <!--加载配置文件-->
-    <context:property-placeholder location="classpath:applicationContext.xml"/>
-
-    <!-- 文件上传 -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-
-    <!-- 配置视图解析器 下面是更复杂的  暂时用这个简单的-->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".jsp"/>
+    <bean name="realm" class="com.sdhh.shiro.UserRealm"/>
+    <bean name="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager"/>
+    <bean name="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
+        <property name="realm" ref="realm"/>
+        <property name="cacheManager" ref="cacheManager"/>
     </bean>
 
-    <import resource="shiro-config.xml"/>
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+
+    <bean name="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
 
 </beans>
