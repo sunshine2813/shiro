@@ -27,6 +27,9 @@ public class Testclass2 {
         Subject subject = SecurityUtils.getSubject();
         subject.login(usernamePasswordToken);
         System.out.println("333333333");
+        System.out.println(subject.isAuthenticated());
+        System.out.println("有权限www:create:"+subject.hasRole("www:create"));
+        System.out.println("没有权限product:create:"+subject.hasRole("product:create"));
     }
 
 

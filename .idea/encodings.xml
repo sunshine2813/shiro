@@ -5,5 +5,16 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/resources/jdbc.properties" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/common_css.jsp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/tag.jsp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/zlgl_commonjs.jsp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/ajax" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/easyui-1.7" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/fonts" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/img" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/ruoyi" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/zl" charset="GBK" />
   </component>
 </project>

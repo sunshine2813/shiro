@@ -28,7 +28,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 <bean name="realm" class="com.sdhh.shiro.UserRealm"/>
     <bean name="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager"/>
-    <bean name="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
+    <bean name="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+    <!--<bean name="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">-->
         <property name="realm" ref="realm"/>
         <property name="cacheManager" ref="cacheManager"/>
     </bean>
@@ -42,5 +43,25 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     <!--shiro生命周期-->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
 
+    <!--shiro web过滤器-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/login.jsp"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /login.jsp anon
+                /logout anon
+                /ajax/** anon
+                /css/** anon
+                /easyui-1.7/** anon
+                /fonts/** anon
+                /img/** anon
+                /js/** anon
+                /ruoyi/** anon
+                /zl/** anon
+                /** user
+            </value>
+        </property>
+    </bean>
 
 </beans>
