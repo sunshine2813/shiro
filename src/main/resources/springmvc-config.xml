@@ -76,7 +76,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 
 
-    <context:property-placeholder location="classpath:applicationContext.xml"/>
+    <!--<context:property-placeholder location="classpath:applicationContext.xml"/>-->
 
 
     </beans>

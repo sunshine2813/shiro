@@ -10,6 +10,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,14 +21,12 @@ import java.util.*;
 * @author WangYing
 * @time 2019年7月23日下午3:48:29
 */
-@Service("UserService")
+@Service("userService")
 public class UserServiceImpl implements UserService{
     private static Logger logger = Logger.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	private UserMapper userMapper;
-	
-	private Subject subject;
 	
 	@Override
 	public User createUser(User user) {
@@ -38,9 +37,36 @@ public class UserServiceImpl implements UserService{
 		String salt = map.get("salt");
 		user.setPassword(md5Pwd);
 		user.setSalt(salt);
-		
 	    return userMapper.createUser(user);
 	}
+
+    @Override
+    public boolean userLogin(String username, String password) {
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.login(usernamePasswordToken);
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+            logger.debug("<---------->"+username+"登录失败"+"AuthenticationException");
+            return false;
+        }
+        return true;
+		/*//创建Subject实例对象
+		subject = SecurityUtils.getSubject();
+		//如果当前用户  没有 成功登录过
+		if( !subject.isAuthenticated()){
+			UsernamePasswordToken token2 = new UsernamePasswordToken(username, password);
+			try {
+				subject.login(token2);
+			} catch (AuthenticationException e) {
+				e.printStackTrace();
+				logger.debug("<---------->"+username+"登录失败"+"AuthenticationException");
+				return false;
+			}
+		}
+		return true;*/
+    }
 
 	@Override
 	public void changePassword(long userId, String newPassword) {
@@ -80,29 +106,14 @@ public class UserServiceImpl implements UserService{
 	}
 
 
-	@Override
-	public boolean userLogin(String username, String password) {
-		//创建Subject实例对象
-		subject = SecurityUtils.getSubject();
-		//如果当前用户  没有 成功登录过
-		if( !subject.isAuthenticated()){
-			UsernamePasswordToken token2 = new UsernamePasswordToken(username, password);
-			try {
-				subject.login(token2);
-			} catch (AuthenticationException e) {
-				e.printStackTrace();
-				logger.debug("<---------->"+username+"登录失败"+"AuthenticationException");
-				return false;
-			}
-		}
-		return true;
-	}
+
 
 	/*
 	验证密码是否正确
 	* */
 	@Override
 	public boolean matchPwdByUsername(String username, String password){
+        Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token2 = new UsernamePasswordToken(username, password);
 		try {
 			subject.login(token2);
