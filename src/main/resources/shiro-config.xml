@@ -49,17 +49,20 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
         <property name="loginUrl" value="/login.jsp"/>
         <property name="filterChainDefinitions">
             <value>
-                /login.jsp anon
-                /logout anon
-                /ajax/** anon
-                /css/** anon
-                /easyui-1.7/** anon
-                /fonts/** anon
-                /img/** anon
-                /js/** anon
-                /ruoyi/** anon
-                /zl/** anon
-                /** user
+                /login.jsp = anon
+                /logout = anon
+                /userLogin.action = anon
+                /adminLogin.action = anon
+                /loginError.action = anon
+                /ajax/** = anon
+                /css/** = anon
+                /easyui-1.7/** = anon
+                /fonts/** = anon
+                /img/** = anon
+                /js/** = anon
+                /ruoyi/** = anon
+                /zl/** = anon
+                <!--/**  = user-->
             </value>
         </property>
     </bean>
