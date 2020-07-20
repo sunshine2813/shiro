@@ -13,6 +13,13 @@
     要求mapper接口和mapper映射文件名称相同，且放在同一个包下 -->
     <mappers>
         <package name="com.sdhh.mapper"/>
+        <!--<mapper resource="com/sdhh/mapper/DictMapper.xml"/>
+        <mapper resource="com/sdhh/mapper/ProjectMapper.xml"/>
+        <mapper resource="com/sdhh/mapper/UserMapper.xml"/>
+        <mapper resource="com/sdhh/mapper/PermissionMapper.xml"/>
+        <mapper resource="com/sdhh/mapper/RoleMapper.xml"/>
+        <mapper resource="com/sdhh/mapper/Role_permissionMapper.xml"/>
+        <mapper resource="com/sdhh/mapper/User_roleMapper.xml"/>-->
     </mappers>
 
 </configuration>

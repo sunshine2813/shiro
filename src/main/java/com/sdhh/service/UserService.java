@@ -13,7 +13,7 @@ import java.util.Set;
 * @author WangYing
 * @time 2019年7月23日下午3:47:07
 */
-/*@Service("userService")*/
+@Service
 public interface UserService {
 
 	public User createUser(User user); //创建账户

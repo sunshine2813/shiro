@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdhh.mapper.DictMapper" >
+
+  <resultMap id="BaseResultMap" type="com.sdhh.po.Dict" >
+    <result column="ptyp" property="ptyp" jdbcType="VARCHAR" />
+    <result column="etyp" property="etyp" jdbcType="VARCHAR" />
+    <result column="enm" property="enm" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <insert id="addDict"  parameterType="com.sdhh.po.Dict" >
+  	insert into 
+  	Dict(id, ptyp,etyp, enm)
+  		values(#{id}, #{ptyp}, #{etyp}, #{enm})
+  </insert>
+
+    <select id="getAllDict" resultType="com.sdhh.po.Dict">
+        select * from dict
+    </select>
+
+    <delete id="deleteDictById">
+        DELETE from dict where id = #{id}
+    </delete>
+    <delete id="deleteDictByFour">
+        DELETE from dict where
+        ptyp = #{ptyp}, etyp = #{etyp}, enm = #{enm}
+    </delete>
+
+    <!--获取项目类别-->
+    <select id="getPtyp" resultType="java.lang.String">
+        SELECT DISTINCT ptyp FROM Dict;
+    </select>
+
+
+
+  
+</mapper>

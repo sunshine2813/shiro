@@ -29,11 +29,11 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/userLogin", method=RequestMethod.POST)
+	@RequestMapping(value = "/userLogin.action", method=RequestMethod.POST)
 	public String login( @RequestParam(value="username") String username, @RequestParam(value="password") String password,
 						 HttpServletRequest request, HttpServletResponse response) throws Exception{
-        logger.debug("<---------->"+"=========LoginController/login");
-		logger.debug("<---------->"+"username:"+username);
+        System.out.println("<---------->"+"=========LoginController/login");
+        System.out.println("<---------->"+"username:"+username);
 			//调用shiro 校验用户账号和密码的正确性
 			boolean  loginFlag = userService.userLogin(username, password);
 			if(loginFlag){

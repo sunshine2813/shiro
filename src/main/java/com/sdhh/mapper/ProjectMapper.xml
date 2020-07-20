@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdhh.mapper.ProjectMapper" >
+    <resultMap id="BaseResultMap" type="com.sdhh.po.Project" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="pnm" property="pnm" jdbcType="VARCHAR" />
+        <result column="ptyp" property="ptyp" jdbcType="VARCHAR" />
+        <result column="pfwh" property="pfwh" jdbcType="VARCHAR" />
+        <result column="tzje" property="tzje" jdbcType="DECIMAL" />
+        <result column="tzlb" property="tzlb" jdbcType="VARCHAR" />
+        <result column="kgsj" property="kgsj" jdbcType="VARCHAR" />
+        <result column="wgsj" property="wgsj" jdbcType="VARCHAR" />
+        <result column="htwgyssj" property="htwgyssj" jdbcType="VARCHAR" />
+        <result column="cbyssj" property="cbyssj" jdbcType="VARCHAR" />
+        <result column="jgyssj" property="jgyssj" jdbcType="VARCHAR" />
+        <result column="sbazdd" property="sbazdd" jdbcType="VARCHAR" />
+        <result column="yxwhdw" property="yxwhdw" jdbcType="VARCHAR" />
+        <result column="year" property="year" jdbcType="INTEGER" />
+    </resultMap>
+
+  <insert id="addProject"  parameterType="com.sdhh.po.Project">
+  	insert into
+  	Project(id,pnm, ptyp,pfwh,tzje, tzlb, kgsj, wgsj, htwgyssj,cbyssj,jgyssj,sbazdd, yxwhdw, year)
+  		values(#{id}, #{pnm}, #{ptyp},#{pfwh}, #{tzje}, #{tzlb},  #{kgsj}, #{wgsj}, #{htwgyssj},#{cbyssj},#{jgyssj}, #{sbazdd}, #{yxwhdw}, #{year})
+  </insert>
+
+    <!--初始化左侧树-年份-项目名-->
+    <select id="getYearProject" resultType="com.sdhh.po.Project">
+        SELECT * FROM project order by year desc;
+    </select>
+
+    <select id="getProjectYear" resultType="java.lang.Integer">
+        select DISTINCT year  from project ORDER BY year desc;
+    </select>
+
+
+
+</mapper>
