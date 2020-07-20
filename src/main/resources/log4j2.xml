@@ -14,7 +14,7 @@
         <!--<logger name="org.springframework" level="INFO"></logger>
         <logger name="org.mybatis" level="INFO"></logger>-->
         <!--<root level="DEBUG">-->
-        <root level="ERROR">
+        <root level="DEBUG">
             <appender-ref ref="Console"/>
         </root>
     </loggers>

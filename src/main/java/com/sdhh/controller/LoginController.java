@@ -38,12 +38,12 @@ public class LoginController {
 			boolean  loginFlag = userService.userLogin(username, password);
 			if(loginFlag){
 				if(username.equals("admin")) {
-                    return "redirect:/adminIndex.action";
+                    return "redirect:/adminIndex";
                 }
                 /*可以通过请求action返回*/
 /*                return "redirect:/toAddDict.action";*/
 				/*改成返回资料管理的首页*/
-				return "redirect:/toIndex.action";
+				return "ziliao/index";
                 /*也可以直接返回页面*/
                 /*return "ziliao/addDict";*/
                 /*之前的普通用户登录首页*/
@@ -99,11 +99,10 @@ public class LoginController {
         return "ziliao/addDict";
     }
 
-	@RequiresUser
-	@RequestMapping("/toIndex")
+	/*@RequestMapping("/toIndex")
 	public String goToIndex()throws Exception{
 		return "ziliao/index";
-	}
+	}*/
 
 
 

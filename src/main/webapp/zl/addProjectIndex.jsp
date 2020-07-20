@@ -172,7 +172,7 @@
     var buttonsData = "";
     function getPtyp(){
         $.ajax({
-            url:"${basePath}getPtyp.action",
+            url:"${basePath}zl/getPtyp.action",
             data:{},
             type:"POST",
             dataType:"json",
@@ -227,7 +227,7 @@
                     +htwgyssj+",cbyssj:"+cbyssj+",jgyssj:"+jgyssj);
 
             $.ajax({
-                url:"${basePath}addProject.action",
+                url:"${basePath}zl/addProject.action",
                 data:{
                     "pnm":addProject_pnm,
                     "ptyp":addProject_ptyp,
